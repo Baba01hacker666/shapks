@@ -1,0 +1,84 @@
+name: Build and Package Android APKs
+
+on:
+  push:
+    branches: [ "main", "master" ]
+    tags: [ "v*" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build All APKs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Make Gradle Wrapper Executable
+        run: chmod +x gradlew
+
+      - name: Compile and Assemble All APKs
+        run: |
+          ./gradlew assembleDebug --stacktrace
+
+      - name: Organize Artifacts
+        run: |
+          mkdir -p dist/apks
+          
+          # BioVault APK
+          if [ -f apps/biovault/build/outputs/apk/debug/biovault-debug.apk ]; then
+            cp apps/biovault/build/outputs/apk/debug/biovault-debug.apk dist/apks/BioVault-v1.0.0-debug.apk
+          elif [ -f apps/biovault/build/outputs/apk/debug/*.apk ]; then
+            cp apps/biovault/build/outputs/apk/debug/*.apk dist/apks/BioVault-v1.0.0-debug.apk
+          fi
+
+          # StealthAlarm APK
+          if [ -f apps/stealthalarm/build/outputs/apk/debug/stealthalarm-debug.apk ]; then
+            cp apps/stealthalarm/build/outputs/apk/debug/stealthalarm-debug.apk dist/apks/StealthAlarm-v1.0.0-debug.apk
+          elif [ -f apps/stealthalarm/build/outputs/apk/debug/*.apk ]; then
+            cp apps/stealthalarm/build/outputs/apk/debug/*.apk dist/apks/StealthAlarm-v1.0.0-debug.apk
+          fi
+
+          # SensorLab APK
+          if [ -f apps/sensorlab/build/outputs/apk/debug/sensorlab-debug.apk ]; then
+            cp apps/sensorlab/build/outputs/apk/debug/sensorlab-debug.apk dist/apks/SensorLab-v1.0.0-debug.apk
+          elif [ -f apps/sensorlab/build/outputs/apk/debug/*.apk ]; then
+            cp apps/sensorlab/build/outputs/apk/debug/*.apk dist/apks/SensorLab-v1.0.0-debug.apk
+          fi
+
+          echo "Prepared APKs:"
+          ls -la dist/apks/
+
+      - name: Upload APKs as Workflow Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: SHAPKS-Android-Apps-debug
+          path: dist/apks/*.apk
+          retention-days: 30
+
+      - name: Create GitHub Release and Upload Assets (Tags Only)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/apks/*.apk
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
