@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SensorLab</string>
+    <string name="title_sensors">Real-Time Sensor Telemetry</string>
+    <string name="sensor_accelerometer">Accelerometer</string>
+    <string name="sensor_gyroscope">Gyroscope</string>
+    <string name="sensor_compass">Digital Compass</string>
+    <string name="sensor_light">Ambient Light</string>
+    <string name="device_specs_title">Device &amp; Hardware Profile</string>
+</resources>

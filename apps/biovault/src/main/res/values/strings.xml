@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">BioVault</string>
+    <string name="security_gate_title">BioVault Security Gate</string>
+    <string name="security_gate_subtitle">Biometric Fingerprint &amp; Device Credential Lock</string>
+    <string name="locked_status_text">Vault is locked. Authenticate using your fingerprint, face, or device PIN / Pattern to unlock.</string>
+    <string name="btn_unlock_biometric">Unlock with Biometrics / PIN</string>
+    <string name="btn_relock">Lock Vault</string>
+    <string name="unlocked_banner_title">BioVault Secure Storage</string>
+    <string name="unlocked_banner_subtitle">Protected with Hardware-backed Biometric Authentication</string>
+    <string name="tab_secrets">Encrypted Notes &amp; Passwords</string>
+    <string name="btn_add_secret">+ Add Secure Entry</string>
+    <string name="empty_vault_msg">No secure entries yet.\nTap below to store sensitive passwords, PINs, or confidential notes.</string>
+    <string name="dialog_title_add">Store New Secret</string>
+    <string name="hint_title">Title (e.g. Bank PIN, Crypto Seed, Note)</string>
+    <string name="hint_content">Confidential Content</string>
+    <string name="btn_save">Save Encrypted</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="copied_to_clipboard">Copied to clipboard!</string>
+    <string name="entry_deleted">Entry deleted</string>
+    <string name="hardware_not_available">Biometric authentication not supported or not available on this device.</string>
+    <string name="none_enrolled">No biometric or device PIN/Pattern enrolled. Please set up a screen lock in your Android settings.</string>
+    <string name="auth_failed">Authentication failed. Please try again.</string>
+    <string name="auth_error">Authentication error: %1$s</string>
+    <string name="biometric_prompt_title">Unlock BioVault</string>
+    <string name="biometric_prompt_subtitle">Confirm your identity</string>
+    <string name="biometric_prompt_description">Touch the fingerprint sensor or enter your device PIN/Pattern.</string>
+</resources>

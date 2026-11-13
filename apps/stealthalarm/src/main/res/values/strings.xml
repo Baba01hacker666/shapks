@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">StealthAlarm</string>
+    <string name="title_armed">ALARM SYSTEM READY</string>
+    <string name="desc_system">Armed anti-theft sensors. Any physical movement or charger disconnect will trigger an emergency siren. Only your fingerprint or PIN can silence it.</string>
+</resources>

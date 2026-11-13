@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#00E676</color>
+    <color name="primary_variant">#00C853</color>
+    <color name="on_primary">#0A1A0F</color>
+    <color name="background">#0B130E</color>
+    <color name="surface">#14231A</color>
+    <color name="surface_card">#1E3628</color>
+    <color name="on_surface">#E8F5E9</color>
+    <color name="text_secondary">#81C784</color>
+    <color name="accent_blue">#00B0FF</color>
+    <color name="accent_amber">#FFD600</color>
+</resources>
